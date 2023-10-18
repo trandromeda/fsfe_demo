@@ -10,6 +10,9 @@ server.on('request', app);
 server.listen(3000, function() { console.log('Listening on 3000'); });
 
 process.on('SIGINT', () => {
+    wss.clients.forEach(function each(client) {
+        client.close();
+    });
     server.close(() => {
         shutdownDB();
     })
