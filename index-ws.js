@@ -32,7 +32,7 @@ wss.on('connection', function(ws) {
     }
 
     db.run(`INSERT INTO visitors (count, time)
-            VALUES (${numClients} datetime('now'))
+            VALUES (${numClients}, datetime('now'))
     `)
 
     ws.on('close', function() {
@@ -54,7 +54,7 @@ db.serialize(() => {
     // run some SQL
     db.run(`
 		CREATE TABLE visitors (
-			count INTEGER
+			count INTEGER,
 			time TEXT
 		)
 	`)
