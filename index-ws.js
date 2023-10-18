@@ -22,7 +22,7 @@ wss.on('connection', function (ws) {
     wss.broadcast(`Current visitors ${numClients}`);
 
     if (ws.readyState === ws.OPEN) {
-        ws.send("Welcome to my server");
+        ws.send("Hello! Welcome to my server");
     }
 
     ws.on('close', function() {
